@@ -1,0 +1,5 @@
+- unless flash.blank?
+  .flash
+    - flash.each do |type, message|
+      .message{:class => type}
+        %p= message

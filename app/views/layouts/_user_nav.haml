@@ -1,0 +1,6 @@
+%ul#user_nav
+  - if @u
+    %li= link_to @u.full_name, edit_user_registration_path(@u)
+    %li= link_to "Sign out", destroy_user_session_path
+  - elsif !current_page?(new_user_session_path) && !current_page?(new_user_registration_path)
+    %li= link_to "Sign in", new_user_session_path

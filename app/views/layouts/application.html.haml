@@ -1,0 +1,42 @@
+!!! 5
+%html
+  %head
+    %title Kanapi
+    = stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/print.css', :media => 'print'
+    /[if lt IE 8]
+      = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'        
+    = yield :stylesheets
+    = javascript_include_tag 'jquery', 'jquery.rails'
+    /[if lt IE 9]
+      = javascript_include_tag 'html5'
+    = yield :javascripts
+    = csrf_meta_tag
+  %body.bp
+    .container
+      #navigation
+        = link_to "Home", root_path 
+        |
+        - if @u
+          = link_to "My Account", edit_user_session_path(@u) 
+          |        
+          = link_to "Logout", logout_path
+        - else     
+          = link_to "Register", new_user_registration_path 
+          |        
+          = link_to "Login", new_user_session_path
+      #header
+        %h1= link_to "Kanapi", root_path
+        #navset
+          -# = navigation [:root]
+          = yield :subnav
+      #content
+        = render 'layouts/flash', :flash => flash
+        = yield
+      #sidebar
+        .block
+          %h3= yield :title_sidebar
+          .content
+            %p= yield :sidebar
+      #extra
+      #footer
