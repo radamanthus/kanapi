@@ -7,7 +7,7 @@ gem "mongoid", ">= 2.0.0.beta9"
 gem "bson_ext", "1.0.4"
 gem "haml"
 gem "compass"
-gem "devise"
+gem "devise", ">=1.1.rc2"
 
 gem "rspec-rails", ">= 2.0.0.beta.17", :group => [:development, :test, :cucumber]
 gem "factory_girl_rails", :group => [:test, :cucumber]
